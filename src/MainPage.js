@@ -1,13 +1,18 @@
 import React, { Fragment } from "react";
-import JobCard from "./components/JobCard";
-import NavBar from "./components/NavBar";
+import JobCard from "./components/Jobcard/JobCard";
+import NavBar from "./components/Navbar/NavBar";
 
 const MainPage = () => {
   return (
     <Fragment>
       <NavBar />
-      <h1>Application</h1>
-      <JobCard />
+      
+      <JobCard
+        location="delhi"
+        type="full time"
+        company="My llc"
+        title="Full Stack Engineer"
+      />
     </Fragment>
   );
 };
