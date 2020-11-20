@@ -1,23 +1,26 @@
-import React, { Fragment, useEffect } from "react";
+import React, {
+  Fragment,
+  useEffect,
+  useState,
+} from "react";
 import JobCard from "./components/Jobcard/JobCard";
 import NavBar from "./components/Navbar/NavBar";
 import axios from "axios";
+import { Box, Grid, Paper } from "@material-ui/core";
 
 const MainPage = () => {
+  const [jobs, setJobs] = useState([]);
+  // const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const fetchItems = async () => {
-      const result = await axios.get(
-        "https://jobs.github.com/positions.json",
-        {
-          headers: {
-            "Access-Control-Allow-Origin":
-              "http://localhost:3000",
-            "Access-Control-Allow-Credentials": "true",
-          },
-        }
+      const result = await axios(
+        "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json"
       );
 
-      console.log(result);
+      setJobs(result.data);
+      // setIsLoading(false);
+      console.log(result.data);
     };
 
     fetchItems();
@@ -26,13 +29,20 @@ const MainPage = () => {
   return (
     <Fragment>
       <NavBar />
-
-      <JobCard
-        location="delhi"
-        type="full time"
-        company="My llc"
-        title="Full Stack Engineer"
-      />
+      <Box style={{ margin: "1% 5%" }}>
+        <Grid container spacing={3}>
+          {jobs.map((job) => (
+            <Grid item xs={3}>
+              <JobCard
+                location={job.location}
+                type={job.type}
+                company={job.company}
+                title={job.title}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
     </Fragment>
   );
 };

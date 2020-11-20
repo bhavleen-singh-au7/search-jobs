@@ -22,7 +22,7 @@ const JobCard = ({ location, title, company, type }) => {
             gutterBottom
             className={classes.heading}
           >
-            Type: {type}
+            Type: <strong>{type}</strong>
           </Typography>
 
           {/* title */}
@@ -30,17 +30,20 @@ const JobCard = ({ location, title, company, type }) => {
             variant="h4"
             className={classes.title}
           >
-            {title}
+            <strong>{title}</strong>
           </Typography>
 
           {/* company */}
-          <Typography className={classes.companyName}>
-            {company}
+          <Typography
+            className={classes.companyName}
+            color="primary"
+          >
+            Company: <strong>{company}</strong>
           </Typography>
 
           {/* location */}
           <Typography variant="body2" component="p">
-            {location}
+            Location: <strong>{location}</strong>
           </Typography>
         </CardContent>
         <CardActions>
@@ -49,7 +52,7 @@ const JobCard = ({ location, title, company, type }) => {
             color="primary"
             fullWidth
           >
-            Learn More
+            View Details
           </Button>
         </CardActions>
       </Card>

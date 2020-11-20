@@ -2,7 +2,7 @@ const { makeStyles } = require("@material-ui/core");
 
 const useStyles = makeStyles({
   card: {
-    width: 275,
+    height: "100%",
     margin: "1%",
   },
   heading: {
