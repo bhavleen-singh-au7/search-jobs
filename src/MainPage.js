@@ -6,7 +6,7 @@ import React, {
 import JobCard from "./components/Jobcard/JobCard";
 import NavBar from "./components/Navbar/NavBar";
 import axios from "axios";
-import { Box, Grid, Paper } from "@material-ui/core";
+import { Box, Grid } from "@material-ui/core";
 
 const MainPage = () => {
   const [jobs, setJobs] = useState([]);
